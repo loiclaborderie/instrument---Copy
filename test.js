@@ -33,3 +33,20 @@ function execute() {
   setTimeout(execute, 3000);
 }
 execute();
+
+let previousScrollPos = 0;
+const header = document.querySelector("header");
+// Keep track of the previous scroll position
+window.addEventListener("scroll", function () {
+  console.log(window.scrollY);
+  console.log("last pos = " + previousScrollPos);
+
+  if (window.scrollY < previousScrollPos) {
+    if (!header.classList.contains("scrollup")) {
+      header.classList.add("scrollup");
+    }
+  } else {
+    header.classList.remove("scrollup");
+  }
+  previousScrollPos = window.scrollY;
+});
