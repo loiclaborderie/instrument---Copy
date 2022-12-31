@@ -33,9 +33,8 @@ function execute() {
   setTimeout(execute, 3000);
 }
 execute();
-
-let previousScrollPos = 0;
 const header = document.querySelector("header");
+let previousScrollPos = 0;
 // Keep track of the previous scroll position
 // window.addEventListener("scroll", function () {
 //   if (window.scrollY < previousScrollPos) {
@@ -46,15 +45,72 @@ const header = document.querySelector("header");
 //   }
 //   previousScrollPos = window.scrollY;
 // });
+
+// window.addEventListener("scroll", function () {
+//   window.requestAnimationFrame(function () {
+//     if (window.scrollY < previousScrollPos) {
+//       if (!header.classList.contains("scrollup")) {
+//         header.classList.add("scrollup");
+//       }
+//     } else {
+//       header.classList.remove("scrollup");
+//     }
+//     previousScrollPos = window.scrollY;
+//   });
+// });
+
+// const SCROLL_THRESHOLD = 70;
+// const SCROLL_TIMEOUT = 100;
+
+// let scrollTimeoutId = null;
+
+// window.addEventListener("scroll", function () {
+
+//   setTimeout(function () {
+//     const scrollSpeed =
+//       Math.abs(window.scrollY - previousScrollPos) / (SCROLL_TIMEOUT / 100);
+
+//     if (scrollSpeed > SCROLL_THRESHOLD && window.scrollY < previousScrollPos) {
+//       header.classList.add("scrollup");
+//     } else if (
+//       scrollSpeed * 5 > SCROLL_THRESHOLD &&
+//       window.scrollY > previousScrollPos
+//     ) {
+//       header.classList.remove("scrollup");
+//     }
+
+//     previousScrollPos = window.scrollY;
+//   }, SCROLL_TIMEOUT);
+// });
+
+let timeoutId;
+
 window.addEventListener("scroll", function () {
-  window.requestAnimationFrame(function () {
-    if (window.scrollY < previousScrollPos) {
-      if (!header.classList.contains("scrollup")) {
-        header.classList.add("scrollup");
-      }
-    } else {
-      header.classList.remove("scrollup");
-    }
-    previousScrollPos = window.scrollY;
-  });
+  // Toggle the 'scrolldown' class based on whether the user is scrolling down
+  header.style.animation = "posOn";
+  header.style.animationDuration = "0.5s";
+  header.classList.toggle("scrolldown", window.scrollY > previousScrollPos);
+  previousScrollPos = window.scrollY;
+
+  // Clear the timeout if it has been set
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+  }
+
+  // Set a timeout to remove the 'scrolldown' class after 500ms
+  timeoutId = setTimeout(function () {
+    header.classList.remove("scrolldown");
+  }, 500);
+});
+
+// Add an event listener for the 'touchmove' event, which is triggered
+// when the user moves their finger on a touch screen
+window.addEventListener("touchmove", function () {
+  header.classList.add("scrolldown");
+});
+
+// Add an event listener for the 'touchend' event, which is triggered
+// when the user lifts their finger off the screen
+window.addEventListener("touchend", function () {
+  header.classList.remove("scrolldown");
 });
