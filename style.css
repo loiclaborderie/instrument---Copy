@@ -35,7 +35,7 @@ header {
   position: fixed;
   top: 0;
   z-index: 3;
-  transition: 0.2s;
+  transition: 0.5s;
   overflow: auto;
 }
 header.scrolldown {
@@ -63,9 +63,11 @@ header.scrolldown {
 }
 .links a,
 .footer-nav a {
+  color: #f1f1f1;
   font-size: 14px;
   padding: 10px 20px;
   text-transform: uppercase;
+  transition: 0.5s;
 }
 .links li::before,
 .footer-nav li::before {
@@ -93,6 +95,12 @@ header.scrolldown {
   content: "]";
   color: rgba(255, 255, 255, 0.602);
   opacity: 1;
+}
+
+.links li:hover a,
+.footer-nav li:hover a {
+  color: #fff;
+  text-shadow: 2px 2px 5px #fff;
 }
 
 .header-nav li:nth-child(1) {

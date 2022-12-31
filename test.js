@@ -35,53 +35,6 @@ function execute() {
 execute();
 const header = document.querySelector("header");
 let previousScrollPos = 0;
-// Keep track of the previous scroll position
-// window.addEventListener("scroll", function () {
-//   if (window.scrollY < previousScrollPos) {
-//     if (!header.classList.contains("scrollup")) {
-//     }
-//   } else {
-//     header.classList.remove("scrollup");
-//   }
-//   previousScrollPos = window.scrollY;
-// });
-
-// window.addEventListener("scroll", function () {
-//   window.requestAnimationFrame(function () {
-//     if (window.scrollY < previousScrollPos) {
-//       if (!header.classList.contains("scrollup")) {
-//         header.classList.add("scrollup");
-//       }
-//     } else {
-//       header.classList.remove("scrollup");
-//     }
-//     previousScrollPos = window.scrollY;
-//   });
-// });
-
-// const SCROLL_THRESHOLD = 70;
-// const SCROLL_TIMEOUT = 100;
-
-// let scrollTimeoutId = null;
-
-// window.addEventListener("scroll", function () {
-
-//   setTimeout(function () {
-//     const scrollSpeed =
-//       Math.abs(window.scrollY - previousScrollPos) / (SCROLL_TIMEOUT / 100);
-
-//     if (scrollSpeed > SCROLL_THRESHOLD && window.scrollY < previousScrollPos) {
-//       header.classList.add("scrollup");
-//     } else if (
-//       scrollSpeed * 5 > SCROLL_THRESHOLD &&
-//       window.scrollY > previousScrollPos
-//     ) {
-//       header.classList.remove("scrollup");
-//     }
-
-//     previousScrollPos = window.scrollY;
-//   }, SCROLL_TIMEOUT);
-// });
 
 let timeoutId;
 
