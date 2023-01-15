@@ -34,26 +34,28 @@ function execute() {
 }
 execute();
 const header = document.querySelector("header");
+//change header by the element name if it's not named the same
 let previousScrollPos = 0;
 
 let timeoutId;
 
 window.addEventListener("scroll", function () {
   // Toggle the 'scrolldown' class based on whether the user is scrolling down
+
   header.style.animation = "posOn";
   header.style.animationDuration = "0.5s";
   header.classList.toggle("scrolldown", window.scrollY > previousScrollPos);
   previousScrollPos = window.scrollY;
 
   // Clear the timeout if it has been set
-  if (timeoutId) {
-    clearTimeout(timeoutId);
-  }
+  // if (timeoutId) {
+  //   clearTimeout(timeoutId);
+  // }
 
   // Set a timeout to remove the 'scrolldown' class after 500ms
-  timeoutId = setTimeout(function () {
-    header.classList.remove("scrolldown");
-  }, 500);
+  // timeoutId = setTimeout(function () {
+  //   header.classList.remove("scrolldown");
+  // }, 500);
 });
 
 // Add an event listener for the 'touchmove' event, which is triggered
